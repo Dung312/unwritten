@@ -12,19 +12,16 @@ type MyProfileFixtures = {
 export const test = base.extend<MyProfileFixtures>({
     loginPage: async ({ page }, use) => {
         const loginPage = new LoginPage(page)
-        // await loginPage.goto()
         await use(loginPage)
     },
 
     homePage: async ({ page }, use) => {
         const homePage = new HomePage(page)
-        // await homePage.visitRecordQuestion()
         await use(homePage)
     },
 
     recordPage: async ({ page, browser }, use) => {
         const recordPage = new RecordPage(page)
-        // await recordPage.record()
         await use(recordPage)
     },
 })

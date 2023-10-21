@@ -17,7 +17,6 @@ export const test = base.extend<MyProfileFixtures>({
 
     homePage: async ({ page }, use) => {
         const homePage = new HomePage(page)
-        await homePage.visitMyProfile()
         await use(homePage)
     },
 
