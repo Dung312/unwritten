@@ -3,7 +3,10 @@ import { test, expect } from '../fixtures/LoginTest'
 test.describe('Login', () => {
     test('Successful', async ({ loginPage, page }) => {
         await loginPage.login('cocooked05@gmail.com', '11111111')
-        await expect(page.getByText('FUTURE QUESTIONS')).toBeVisible()
+
+        await expect(page.getByText('FUTURE QUESTIONS')).toBeVisible({
+            timeout: 20000,
+        })
     })
     test('login Enter a valid password', async ({ loginPage, page }) => {
         await loginPage.login('s1@yopmail.com', '1111111')

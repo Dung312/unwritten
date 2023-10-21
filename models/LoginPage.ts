@@ -16,10 +16,16 @@ export class LoginPage {
     }
 
     async login(email: string, password: string) {
+        await this.page.goto('https://app-dev.unwrittenstory.co/')
         await this.username.fill(email)
         await this.pwd.fill(password)
-
         await this.btnSubmit.click()
-        await this.page.waitForSelector('text=Our Library')
+    }
+
+    async loged(email: string, password: string) {
+        await this.username.fill(email)
+        await this.pwd.fill(password)
+        await this.btnSubmit.click()
+        await this.page.waitForSelector('text=Our Library', { timeout: 20000 })
     }
 }
