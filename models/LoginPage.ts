@@ -1,12 +1,14 @@
-import { type Page, type Locator, expect } from '@playwright/test';
+import { type Page, type Locator, expect } from '@playwright/test'
 
 export class LoginPage {
-    private readonly username: Locator;
-    private readonly pwd: Locator;
+    private readonly username: Locator
+    private readonly pwd: Locator
+    private readonly btnSubmit: Locator
 
     constructor(public readonly page: Page) {
         this.username = this.page.getByPlaceholder('name@name.com')
         this.pwd = this.page.getByPlaceholder('********')
+        this.btnSubmit = this.page.locator('button[type="submit"]')
     }
 
     async goto() {
@@ -16,8 +18,8 @@ export class LoginPage {
     async login(email: string, password: string) {
         await this.username.fill(email)
         await this.pwd.fill(password)
-        await this.pwd.press("Enter")
-    }
 
-    
+        await this.btnSubmit.click()
+        await this.page.waitForSelector('text=Our Library')
+    }
 }

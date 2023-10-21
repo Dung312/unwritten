@@ -1,14 +1,13 @@
-import { test as base, expect } from '@playwright/test';
-import { HomePage } from '../models/HomePage';
-import { LoginPage } from '../models/LoginPage';
-import { MyProfilePage } from '../models/MyProfilePage';
-
+import { test as base, expect } from '@playwright/test'
+import { HomePage } from '../models/HomePage'
+import { LoginPage } from '../models/LoginPage'
+import { MyProfilePage } from '../models/MyProfilePage'
 
 type MyProfileFixtures = {
     homePage: HomePage
     loginPage: LoginPage
     myProfilePage: MyProfilePage
-};
+}
 // Extend basic test by providing a "loginPage" fixture.
 export const test = base.extend<MyProfileFixtures>({
     loginPage: async ({ page }, use) => {
@@ -19,14 +18,12 @@ export const test = base.extend<MyProfileFixtures>({
 
     homePage: async ({ page }, use) => {
         const homePage = new HomePage(page)
-        await homePage.visitMyProfile
+        await homePage.visitMyProfile()
         await use(homePage)
     },
 
-    myProfilePage: async ({page}, use) =>{
+    myProfilePage: async ({ page }, use) => {
         const myProfile = new MyProfilePage(page)
         await use(myProfile)
-    }
-});
-
-export { expect } from '@playwright/test';
+    },
+})
