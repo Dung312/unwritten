@@ -8,6 +8,7 @@ export class HomePage {
     private readonly paymentSetting: Locator
     private readonly recordQuestionBtn: Locator
     private readonly listionAnswerBtn: Locator
+    private readonly seeVideoBtn: Locator
 
     constructor(public readonly page: Page) {
         this.menu = this.page.locator('#menu')
@@ -20,6 +21,9 @@ export class HomePage {
         })
         this.listionAnswerBtn = this.page.getByRole('button', {
             name: 'Listen Answer',
+        })
+        this.seeVideoBtn = this.page.getByRole('button', {
+            name: 'See Video',
         })
     }
 
@@ -47,5 +51,9 @@ export class HomePage {
 
     async visitListionAnswer() {
         await this.listionAnswerBtn.click()
+    }
+
+    async visitSeeVideo() {
+        await this.seeVideoBtn.click()
     }
 }

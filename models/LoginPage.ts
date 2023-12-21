@@ -1,4 +1,5 @@
 import { type Page, type Locator, expect } from '@playwright/test'
+import { TIMEOUT } from 'dns'
 
 export class LoginPage {
     private readonly username: Locator
@@ -12,7 +13,7 @@ export class LoginPage {
     }
 
     async goto() {
-        await this.page.goto('https://app-dev.unwrittenstory.co/')
+        await this.page.goto('https://app-uat.unwrittenstory.co/')
     }
 
     async login(email: string, password: string) {

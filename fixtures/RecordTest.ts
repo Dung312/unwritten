@@ -11,22 +11,18 @@ type MyProfileFixtures = {
 
 export const test = base.extend<MyProfileFixtures>({
     loginPage: async ({ page , context}, use) => {
-        await context.grantPermissions(['camera', 'microphone'])
         const loginPage = new LoginPage(page)
         await loginPage.goto()
         await use(loginPage)
     },
 
     homePage: async ({ page , context}, use) => {
-        await context.grantPermissions(['camera', 'microphone'])
         const homePage = new HomePage(page)
         await use(homePage)
     },
 
     recordPage: async ({ page, context, browser}, use) => {
-        await context.grantPermissions(['camera', 'microphone'])
-        const newPage = await context.newPage()
-        const recordPage = new RecordPage(newPage)
+        const recordPage = new RecordPage(page)
         await use(recordPage)
       
     },
