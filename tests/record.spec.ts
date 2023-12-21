@@ -1,12 +1,13 @@
 import { test, expect } from '../fixtures/RecordTest'
 
-test.beforeEach(async ({ page, loginPage, homePage }) => {
-  await loginPage.login('s1@yopmail.com', '11111111')
-  await homePage.visitRecordQuestion()
-});
+test.beforeEach(async ({ page, loginPage }) => {
+    await loginPage.login('u1a@yopmail.com', '11111111')
+})
 
-test.describe('sender record question', () => {
-  test('upload image success', async ({ recordPage, page }) => {
-    await recordPage.record()
-  })
+test.describe('Sender record Answer', () => {
+    test('user record question', async ({ homePage, page, recordPage }) => {
+        await homePage.visitSeeVideo()
+        await recordPage.playRecord()
+        await recordPage.startRecord(3000)
+    })
 })
